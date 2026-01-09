@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maison Bilal | About</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <nav class="fixed top-0 left-0 w-full z-50 bg-black/95 border-b border-white/10 px-6 py-4 flex justify-between items-center">
+        <a href="index.html" class="flex flex-col">
+            <span class="text-[10px] uppercase tracking-[0.4em] text-[#C6A87C]">Maison</span>
+            <span class="text-xl font-heading font-bold text-white">BILAL</span>
+        </a>
+        <div class="hidden md:flex gap-6 text-xs uppercase tracking-widest text-gray-300 items-center">
+            <a href="index.html" class="hover:text-[#C6A87C]" data-i18n="home">Home</a>
+             <select class="lang-select"><option value="en">EN</option><option value="fr">FR</option><option value="ar">AR</option></select>
+        </div>
+    </nav>
+
+    <section class="pt-40 pb-20 px-6 text-center">
+        <span class="text-[#C6A87C] text-xs uppercase tracking-[0.4em]" data-i18n="about_sub">Origins</span>
+        <h1 class="text-5xl md:text-7xl font-heading text-white mt-6 mb-8 leading-tight" data-i18n="about_title">The Soul</h1>
+        <div class="w-[1px] h-24 bg-[#C6A87C] mx-auto"></div>
+    </section>
+
+    <section class="py-20 bg-[#0a0a0a]">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div class="relative h-[500px] border border-white/10">
+                <img src="./src/1.png" class="w-full h-full object-cover grayscale-[30%]">
+            </div>
+            <div class="space-y-8">
+                <h2 class="text-3xl font-heading text-white" data-i18n="founder_title">Founder's Note</h2>
+                <p class="text-gray-400 font-light leading-loose text-lg" data-i18n="founder_text">Welcome...</p>
+                <div class="pt-6">
+                    <img src="./src/2.png" class="invert opacity-70 w-32 mb-2">
+                    <p class="text-xs text-[#C6A87C] uppercase tracking-widest">Bilal Nainia</p>
+                    <p class="text-[10px] text-gray-600 uppercase" data-i18n="founder_role">Founder</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="border-t border-white/10 py-8 bg-black text-center">
+        <p class="text-gray-600 text-[10px] uppercase tracking-[0.2em]" data-i18n="footer_copy">© 2026 Maison Bilal</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

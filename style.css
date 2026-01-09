@@ -1,0 +1,56 @@
+/* FILE: style.css */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500&family=Amiri:wght@400;700&display=swap');
+
+:root {
+    --brand-gold: #C6A87C;
+    --brand-black: #050505;
+}
+
+body {
+    background-color: var(--brand-black);
+    color: #f3f3f3;
+    padding-top: 80px;
+    overflow-x: hidden;
+}
+
+/* Logic للخطوط حسب اللغة */
+body[dir="ltr"] { font-family: 'Montserrat', sans-serif; }
+body[dir="rtl"] { font-family: 'Amiri', serif; }
+
+.font-heading { font-family: 'Cinzel', serif; }
+body[dir="rtl"] .font-heading { font-family: 'Amiri', serif; font-weight: 700; }
+
+/* Navbar */
+nav {
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+    background: rgba(5, 5, 5, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Language Selector */
+.lang-select {
+    background: transparent; color: var(--brand-gold);
+    border: 1px solid var(--brand-gold);
+    padding: 4px 8px; font-size: 11px;
+    text-transform: uppercase; cursor: pointer;
+}
+.lang-select option { background: black; color: white; }
+
+/* Components */
+.product-card {
+    background: #111; border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s;
+}
+.product-card:hover { transform: translateY(-5px); border-color: var(--brand-gold); }
+
+.btn-gold {
+    border: 1px solid var(--brand-gold); color: var(--brand-gold);
+    padding: 10px 20px; text-transform: uppercase; font-size: 12px;
+    letter-spacing: 2px; transition: all 0.3s; cursor: pointer;
+}
+.btn-gold:hover { background: var(--brand-gold); color: black; }
+
+/* RTL Utilities */
+body[dir="rtl"] .text-left { text-align: right; }
+body[dir="rtl"] .tracking-widest { letter-spacing: 0; }

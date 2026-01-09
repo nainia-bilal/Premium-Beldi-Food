@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maison Bilal | Collections</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    
+    <nav class="fixed top-0 left-0 w-full z-50 bg-black/95 border-b border-white/10 px-6 py-4 flex justify-between items-center">
+        <a href="index.html" class="font-heading font-bold text-xl text-white">MAISON BILAL</a>
+        <select class="lang-select"><option value="en">EN</option><option value="fr">FR</option><option value="ar">AR</option></select>
+    </nav>
+
+    <section class="py-20 px-6 container mx-auto">
+        <h1 class="text-4xl font-heading text-white text-center mb-16" data-i18n="cat_title">Our Collections</h1>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+            <a href="products.html?cat=amlou" class="group relative h-80 overflow-hidden border border-white/10">
+                <img src="https://bewilderedinmorocco.com/wp-content/uploads/2025/01/Amlou8.jpg" class="w-full h-full object-cover opacity-60">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <h2 class="text-3xl font-heading text-white uppercase border-b-2 border-[#C6A87C]">Amlou</h2>
+                </div>
+            </a>
+            <a href="products.html?cat=honey" class="group relative h-80 overflow-hidden border border-white/10">
+                <img src="https://st3.depositphotos.com/13324256/16403/i/450/depositphotos_164039546-stock-photo-fresh-honey-in-glass-jar.jpg" class="w-full h-full object-cover opacity-60">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <h2 class="text-3xl font-heading text-white uppercase border-b-2 border-[#C6A87C]">Honey</h2>
+                </div>
+            </a>
+            <a href="products.html?cat=dairy" class="group relative h-80 overflow-hidden border border-white/10">
+                <img src="https://media.istockphoto.com/id/155373465/photo/assortment-of-most-common-dairy-products-on-white-backdrop.jpg?b=1&s=612x612&w=0&k=20&c=3Li0_h03ZGpItFO_fvDz1KBSgGEoWdGqhnDKPYTzCes=" class="w-full h-full object-cover opacity-60">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <h2 class="text-3xl font-heading text-white uppercase border-b-2 border-[#C6A87C]">Dairy</h2>
+                </div>
+            </a>
+            <a href="products.html?cat=grains" class="group relative h-80 overflow-hidden border border-white/10">
+                <img src="https://thumbs.dreamstime.com/b/fine-ground-barley-texture-background-whole-spelt-grain-species-high-protein-fiber-rich-vegan-plant-based-food-ingredient-gluten-398830630.jpg" class="w-full h-full object-cover opacity-60">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <h2 class="text-3xl font-heading text-white uppercase border-b-2 border-[#C6A87C]">Grains</h2>
+                </div>
+            </a>
+        </div>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maison Bilal | Shop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    
+    <nav class="fixed top-0 left-0 w-full z-50 bg-black/95 border-b border-white/10 px-6 py-4 flex justify-between items-center">
+        <a href="index.html" class="font-heading font-bold text-xl text-white">MAISON BILAL</a>
+        <div class="flex gap-4 items-center">
+            <a href="categories.html" class="text-xs text-[#C6A87C] uppercase hidden md:block">Categories</a>
+            <select class="lang-select"><option value="en">EN</option><option value="fr">FR</option><option value="ar">AR</option></select>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-6 py-12">
+        <h1 id="page-title" class="text-3xl font-heading text-[#C6A87C] mb-12 text-center uppercase tracking-widest" data-i18n="loading">Loading...</h1>
+        
+        <div id="products-grid" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            </div>
+    </div>
+
+    <div id="order-modal" class="fixed inset-0 z-[2000] hidden">
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-sm" onclick="closeModal()"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-md bg-[#111] border border-[#C6A87C] p-8">
+            <h3 class="text-[#C6A87C] font-heading text-xl mb-4 text-center">Order</h3>
+            <p id="modal-product" class="text-white text-center mb-6 uppercase tracking-widest"></p>
+            <form onsubmit="sendWhatsapp(event)" class="space-y-4">
+                <input id="c-name" type="text" placeholder="Name" class="w-full bg-black border border-white/20 p-3 text-white">
+                <input id="c-address" type="text" placeholder="Address" class="w-full bg-black border border-white/20 p-3 text-white">
+                <input id="c-qty" type="number" value="1" class="w-full bg-black border border-white/20 p-3 text-white">
+                <button type="submit" class="w-full bg-[#C6A87C] text-black font-bold py-3 uppercase" data-i18n="form_send">Send WhatsApp</button>
+            </form>
+            <button onclick="closeModal()" class="absolute top-2 right-2 text-gray-500"><i data-lucide="x"></i></button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
