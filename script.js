@@ -1,6 +1,3 @@
-// FILE: script.js
-
-// 1. قاعدة بيانات الترجمة (قاموس)
 const translations = {
     en: {
         home: "Home", collections: "Collections", shop: "Shop", about: "Our Story", contact: "Contact",
@@ -52,34 +49,41 @@ const translations = {
     }
 };
 
-// 2. قاعدة بيانات المنتجات (التي طلبتها)
 const productsDB = [
-    // AMLOU
     { id: 1, category: 'amlou', price: '150 DH', img: 'https://i.etsystatic.com/57771994/r/il/36f725/6751174485/il_340x270.6751174485_mysa.jpg', name: { en: "Almond Amlou", fr: "Amlou aux Amandes", ar: "أملو باللوز" } },
     { id: 2, category: 'amlou', price: '90 DH', img: 'https://plus.unsplash.com/premium_photo-1701210419456-78f3e42789ff?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cGVhbnV0JTIwYnV0dGVyfGVufDB8fDB8fHww', name: { en: "Peanut Amlou", fr: "Amlou Cacahuètes", ar: "أملو بالكاوكاو" } },
     { id: 3, category: 'amlou', price: '200 DH', img: 'https://i.etsystatic.com/55999415/r/il/589704/6593763505/il_340x270.6593763505_g67t.jpg', name: { en: "Pure Argan Amlou", fr: "Amlou Argan Pur", ar: "أملو بالأركان الحر" } },
     { id: 4, category: 'amlou', price: '130 DH', img: 'https://www.auxdelicesdupalais.net/wp-content/uploads/2022/01/Sans-titre-241.jpg', name: { en: "Mixed Amlou", fr: "Amlou Mixte", ar: "أملو مخلط" } },
-    // HONEY
+  
     { id: 5, category: 'honey', price: '300 DH', img: 'https://biomielandco.com/modules/ph_simpleblog/featured/93.png', name: { en: "Euphorbia Honey", fr: "Miel Daghmous", ar: "عسل الدغموس" } },
     { id: 6, category: 'honey', price: '120 DH', img: 'https://img.freepik.com/premium-photo/close-up-lemon-slice-against-white-background_1048944-20642629.jpg?semt=ais_hybrid&w=740&q=80', name: { en: "Lemon Honey", fr: "Miel Citron", ar: "عسل الليمون" } },
     { id: 7, category: 'honey', price: '150 DH', img: 'https://cdn11.bigcommerce.com/s-2ubphtnd0n/images/stencil/500x659/products/120/393/Chunk2__37116.1603141957.jpg?c=2', name: { en: "Eucalyptus Honey", fr: "Miel Eucalyptus", ar: "عسل الكالبتوس" } },
     { id: 8, category: 'honey', price: '250 DH', img: 'https://earthenconnect.com/wp-content/uploads/2025/01/Banner-2-Basil.jpg', name: { en: "Basil Honey", fr: "Miel Basilic", ar: "عسل الريحان" } },
-    // DAIRY
+
     { id: 9, category: 'dairy', price: '80 DH', img: 'https://media.istockphoto.com/id/179875636/photo/butter.jpg?s=612x612&w=0&k=20&c=dQjAemP1f3RDr64uN7gN5TQCZI6XkkgijtWYo9yTB7o=', name: { en: "Beldi Butter", fr: "Beurre Beldi", ar: "زبدة بلدية" } },
     { id: 10, category: 'dairy', price: '70 DH', img: 'https://static.webteb.net/images/content/tbl_articles_article_25069_782d1122557-c492-4c06-8ea7-a26335dd0727.jpg', name: { en: "Aged Smen", fr: "Smen Beldi", ar: "سمن بلدي حار" } },
-    // GRAINS
+
     { id: 11, category: 'grains', price: '40 DH', img: 'https://thumbs.dreamstime.com/b/fine-ground-barley-texture-background-whole-spelt-grain-species-high-protein-fiber-rich-vegan-plant-based-food-ingredient-gluten-398830630.jpg', name: { en: "Barley (Dchicha)", fr: "Semoule d'Orge", ar: "دشيشة الشعير" } }
 ];
 
 let currentLang = localStorage.getItem('siteLang') || 'en';
 
 document.addEventListener('DOMContentLoaded', () => {
-    lucide.createIcons();
+    // 1. Activate Icons
+    if (window.lucide) {
+        lucide.createIcons();
+    }
+
+    // 2. Setup Language
     setLanguage(currentLang);
+    
+    // 3. Setup Mobile Menu (Button logic)
     setupMobileMenu();
+    
+    // 4. Render Products
     renderProducts();
 
-    // ربط تغيير اللغة
+    // 5. Language Select Listeners
     const selectors = document.querySelectorAll('.lang-select');
     selectors.forEach(sel => {
         sel.value = currentLang;
@@ -87,7 +91,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// دالة تغيير اللغة
+function setupMobileMenu() {
+    const btn = document.getElementById('menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const close = document.getElementById('close-menu');
+    
+    if(btn && menu && close) {
+        btn.onclick = () => {
+            menu.classList.remove('translate-x-full');
+        };
+        close.onclick = () => {
+            menu.classList.add('translate-x-full');
+        };
+    }
+}
+
 function setLanguage(lang) {
     currentLang = lang;
     localStorage.setItem('siteLang', lang);
@@ -98,13 +116,10 @@ function setLanguage(lang) {
         if (translations[lang][key]) el.innerText = translations[lang][key];
     });
 
-    renderProducts(); // إعادة رسم المنتجات باللغة الجديدة
-    
-    // تحديث القوائم الاخرى
+    renderProducts(); 
     document.querySelectorAll('.lang-select').forEach(s => s.value = lang);
 }
 
-// دالة عرض المنتجات
 function renderProducts() {
     const grid = document.getElementById('products-grid');
     if (!grid) return;
@@ -113,10 +128,12 @@ function renderProducts() {
     const selectedCat = urlParams.get('cat');
     const title = document.getElementById('page-title');
 
-    if(selectedCat) {
-        title.innerText = (currentLang === 'ar') ? selectedCat : selectedCat.toUpperCase();
-    } else {
-        title.innerText = translations[currentLang].shop;
+    if(title) {
+        if(selectedCat) {
+            title.innerText = (currentLang === 'ar') ? selectedCat : selectedCat.toUpperCase();
+        } else {
+            title.innerText = translations[currentLang].shop;
+        }
     }
 
     let displayProducts = productsDB;
@@ -145,18 +162,6 @@ function renderProducts() {
     });
 }
 
-// Mobile Menu
-function setupMobileMenu() {
-    const btn = document.getElementById('menu-btn');
-    const menu = document.getElementById('mobile-menu');
-    const close = document.getElementById('close-menu');
-    if(btn) {
-        btn.onclick = () => menu.classList.remove('translate-x-full');
-        close.onclick = () => menu.classList.add('translate-x-full');
-    }
-}
-
-// WhatsApp Order
 function openModal(name) {
     document.getElementById('modal-product').innerText = name;
     document.getElementById('order-modal').classList.remove('hidden');
@@ -171,7 +176,7 @@ function sendWhatsapp(e) {
     const qty = document.getElementById('c-qty').value;
     const product = document.getElementById('modal-product').innerText;
     
-    const msg = `Salam Maison Bilal, Commande:\n📦 Produit: *${product}*\n🔢 Qty: ${qty}\n👤 Nom: ${name}\n📍 Adresse: ${address}`;
+    const msg = `Salam Mr.Bilal, Commande:\n📦 Produit: *${product}*\n🔢 Qty: ${qty}\n👤 Nom: ${name}\n📍 Adresse: ${address}`;
     window.open(`https://wa.me/212687755912?text=${encodeURIComponent(msg)}`, '_blank');
     closeModal();
 }
